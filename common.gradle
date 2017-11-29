@@ -3,20 +3,8 @@ android {
     buildToolsVersion "27.0.1"
 
     buildTypes {
-        debug{
-            applicationVariants.all { variant ->
-                variant.outputs.all {
-                    outputFileName = "tachiyomi-"$pkgNameSuffix"-debug-v"$versionName".apk"
-                }
-            }
-        }
         release {
             minifyEnabled false
-            applicationVariants.all { variant ->
-                variant.outputs.all {
-                    outputFileName = "tachiyomi-"$pkgNameSuffix"-v"$versionName".apk"
-                }
-            }
         }
     }
 
