@@ -41,5 +41,5 @@ deploy:
     repo: CarlosEsco/tachiyomi-extensions
 env:
   matrix:
-    "-COMPONENT=all-ehentai"
-    "-COMPONENT=all-nhentai"
+    -COMPONENT=all-ehentai
+    -COMPONENT=all-nhentai
