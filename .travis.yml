@@ -34,10 +34,13 @@ deploy:
   api_key:
     secure: gM5cVl6TKsf/WUjOY/zxhErq9VD+L2jY0ur6aKKUiuOfu9L/+Zrl2ZWTLOJ+5b/gFBp9/0vB6p+xwggpGjISGi3lg4/kDffAbu2ILrkvNJxfIEo8hP/sFoKHOLZ6XFTJ/P1CgmM7Wd44V0bKpHateGgeTo+lDFzIM1b0WlVWzb+a6LDNgI11NS0630ao5VcdET4jceoEl38kaKyH2reRDndGnDnayDZDDlOqlG59Iiiokkhh7nNvve6BbKFzpcO3BKbo2KsPuZKlwy9YF84c9P5lZHV83Aag1aevmh+5OIwi+m77T2IOOPa9llwHP96O1N+vzMHYnUaEMYKa74VH7VDgaRPRHgM7y37zkkAAb6/+tXU8nlhMOn5hM9AukMqWdPhwCy4dTMz/ajYbP7PSxWOk9Z5zwPOfZ3G+KYES6yYbO2hwv20DBqUucneM4Vy/g7yaQx1/qMHQYDIT2ZleponQV2vkTTy7io5U0HtaZreByDjhWqRdzZFi25G/HP7DdZuSMFpMQuysqTmbqaTzpwr21ey0IxGeslyBuonNdp/cfgF67qDOceRL+5bfjv9rFUK6oxQPcauE1QofSRnQXMNivcD5vUm8Y0b/kxOpprZeeebpjxlUhz5L8rcmeOcoWyOUJq4UWv2HqR//+ZGK0BonhpX3WhIJxM6zV9hlUAE=
   file_glob: "true"
-  file: tachiyomi-extensions/build/outputs/apk/*.apk
+  file: tachiyomi-extensions/src/all/ehentai/build/outputs/apk/debug/*.apk
+        tachiyomi-extensions/src/all/nhentai/build/outputs/apk/debug/*.apk
   skip_cleanup: true
   on:
     branch: master
     repo: CarlosEsco/tachiyomi-extensions
 env:
-  matrix: "-COMPONENT=all-ehentai"
+  matrix:
+    "-COMPONENT=all-ehentai"
+    "-COMPONENT=all-nhentai"
