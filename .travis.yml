@@ -21,6 +21,7 @@ jdk:
 
 before_script:
   - chmod +x gradlew
+  - chmod +x scripts/assemble.sh
 
 before_install:
   - mkdir "$ANDROID_HOME/licenses" || true
