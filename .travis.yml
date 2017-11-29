@@ -40,6 +40,5 @@ cache:
     - $HOME/.gradle/wrapper/
     
 env:
-  - GRADLE_OPTS="-XX:MaxPermSize=1024m -XX:+CMSClassUnloadingEnabled -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m"
   matrix:
     -COMPONENT=all-ehentai
