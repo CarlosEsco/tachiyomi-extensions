@@ -1,45 +1,43 @@
 language: android
 android:
   components:
-    - platform-tools
-    - tools
-
-    # The BuildTools version used by your project
-    - build-tools-27.0.1
-    - android-26
-    - extra-android-m2repository
-    - extra-google-m2repository
-    - extra-android-support
-    - extra-google-google_play_services
-
+  - platform-tools
+  - tools
+  - build-tools-27.0.1
+  - android-26
+  - extra-android-m2repository
+  - extra-google-m2repository
+  - extra-android-support
+  - extra-google-google_play_services
   licenses:
-    - android-sdk-license-.+
-    - '.+'
-
+  - android-sdk-license-.+
+  - ".+"
 jdk:
-  - oraclejdk8
-
+- oraclejdk8
 before_script:
-  - chmod +x gradlew
-  - chmod +x scripts/assemble.sh
-
+- chmod +x gradlew
+- chmod +x scripts/assemble.sh
 before_install:
-  - mkdir "$ANDROID_HOME/licenses" || true
-  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-
-#Build, and run tests
+- mkdir "$ANDROID_HOME/licenses" || true
+- echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+- echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
 script: scripts/assemble.sh
 sudo: false
-
 before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-  
+- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-    
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+deploy:
+  provider: releases
+  api_key:
+    secure: gM5cVl6TKsf/WUjOY/zxhErq9VD+L2jY0ur6aKKUiuOfu9L/+Zrl2ZWTLOJ+5b/gFBp9/0vB6p+xwggpGjISGi3lg4/kDffAbu2ILrkvNJxfIEo8hP/sFoKHOLZ6XFTJ/P1CgmM7Wd44V0bKpHateGgeTo+lDFzIM1b0WlVWzb+a6LDNgI11NS0630ao5VcdET4jceoEl38kaKyH2reRDndGnDnayDZDDlOqlG59Iiiokkhh7nNvve6BbKFzpcO3BKbo2KsPuZKlwy9YF84c9P5lZHV83Aag1aevmh+5OIwi+m77T2IOOPa9llwHP96O1N+vzMHYnUaEMYKa74VH7VDgaRPRHgM7y37zkkAAb6/+tXU8nlhMOn5hM9AukMqWdPhwCy4dTMz/ajYbP7PSxWOk9Z5zwPOfZ3G+KYES6yYbO2hwv20DBqUucneM4Vy/g7yaQx1/qMHQYDIT2ZleponQV2vkTTy7io5U0HtaZreByDjhWqRdzZFi25G/HP7DdZuSMFpMQuysqTmbqaTzpwr21ey0IxGeslyBuonNdp/cfgF67qDOceRL+5bfjv9rFUK6oxQPcauE1QofSRnQXMNivcD5vUm8Y0b/kxOpprZeeebpjxlUhz5L8rcmeOcoWyOUJq4UWv2HqR//+ZGK0BonhpX3WhIJxM6zV9hlUAE=
+  file_glob: "true"
+  file: tachiyomi-extensions/build/outputs/apk/*.apk
+  skip_cleanup: true
+  on:
+    branch: master
+    repo: CarlosEsco/tachiyomi-extensions
 env:
-  matrix:
-    -COMPONENT=all-ehentai
+  matrix: "-COMPONENT=all-ehentai"
