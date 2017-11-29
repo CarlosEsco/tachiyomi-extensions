@@ -1,5 +1,4 @@
 set -ev
- mkdir -p /build/apk;
 if [ "${COMPONENT}" = "all-ehentai" ]; then
 	./gradlew clean assembleDebug -a -b src/all/ehentai/build.gradle
 	cp -R /src/all/ehentai/build/outputs/apk/debug/. /build/apk/
